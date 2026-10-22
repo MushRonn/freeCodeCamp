@@ -1,3 +1,7 @@
+#lesson 1
+#simple data types and student profile
+#using python
+
 name = 'Alice'
 print(name, type(name))
 
