@@ -1,5 +1,5 @@
 #lesson 1
-#simple data types and student profile
+#building a simple report card reader
 #using python
 
 name = 'Alice'
