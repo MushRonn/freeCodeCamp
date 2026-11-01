@@ -14,7 +14,7 @@ then use the terminal and REPL examples in the comments for practice.
 # computer. Examples of terminal apps:
 #   Windows: Command Prompt or PowerShell
 #   macOS:   Terminal
-#   Linux:   a terminal app such as GNOME Terminal or Konsole
+#   Linux:   a terminal app such as GNOME Terminal or Console
 
 # IDE / CODE EDITOR
 # IDE means Integrated Development Environment. It can combine a code editor,
@@ -60,3 +60,6 @@ def greet(name):
 
 if __name__ == '__main__':
     print(greet('world'))
+
+score = 100
+print(f' My score is {score}%')
