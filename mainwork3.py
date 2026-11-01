@@ -175,3 +175,8 @@ if is_citizen and voter_age >= 18:
     print('Eligible to vote based on both conditions')
 if not is_employed:
     print('Currently not employed')
+
+# MY QUIZ RESULT!
+result = 100
+
+print(f' My Python Basic Quiz Grade is = ', result)
