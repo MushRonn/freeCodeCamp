@@ -243,3 +243,67 @@ print('Sorted by word length:', sorted(language_tuple, key=len))
 #   tuple: immutable, so it has no sort() method
 #   list.sort(): sorts that list in place and returns None
 #   sorted(iterable): works with tuples and other iterables, returns a new list
+
+
+# 13. Loops
+# Loops repeat an indented block of code. Indentation shows which statements
+# belong to the loop.
+
+# A for loop visits each item in an iterable, such as a list.
+for language in ['Rust', 'Java', 'Python', 'C++']:
+    print('Language:', language)
+
+# Strings are iterable too, so a for loop can visit each character.
+for character in 'code':
+    print('Character:', character)
+
+# Nested loops: for every category, visit every food.
+categories = ['Fruit', 'Vegetable']
+foods = ['Apple', 'Carrot', 'Banana']
+for category in categories:
+    for food in foods:
+        print(category, food)
+
+# A while loop repeats as long as its condition is True. Make sure something
+# in the loop changes the condition, or the loop may never stop.
+countdown = 3
+while countdown > 0:
+    print('Countdown:', countdown)
+    countdown -= 1
+print('Done!')
+
+# Interactive guessing-game pattern from the lesson (commented out so
+# running this reviewer does not wait for keyboard input):
+# secret_number = 3
+# guess = 0
+# while guess != secret_number:
+#     guess = int(input('Guess the number (1-5): '))
+#     if guess != secret_number:
+#         print('Wrong! Try again.')
+# print('You got it!')
+
+# break exits the current loop immediately.
+developer_names = ['Jess', 'Naomi', 'Tom']
+for developer in developer_names:
+    if developer == 'Naomi':
+        break
+    print('Before break:', developer)  # prints Jess only
+
+# continue skips the rest of this iteration and starts the next one.
+for developer in developer_names:
+    if developer == 'Naomi':
+        continue
+    print('Not skipped:', developer)  # prints Jess and Tom
+
+# A loop's else clause runs only if the loop finishes without break.
+# In nested loops, indentation determines which loop the else belongs to.
+words = ['sky', 'apple', 'rhythm', 'fly', 'orange']
+for current_word in words:
+    for letter in current_word:
+        if letter.lower() in 'aeiou':
+            print(f"'{current_word}' contains the vowel '{letter}'")
+            break
+    else:
+        # This else belongs to the inner for loop. It runs when that loop
+        # checks every letter without finding a vowel (no break occurred).
+        print(f"'{current_word}' has no vowels")
