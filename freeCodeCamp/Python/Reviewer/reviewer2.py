@@ -194,3 +194,52 @@ print('Every other dessert:', dessert_tuple[::2])
 # Choosing a sequence:
 # Use a list for a collection you expect to add to, remove from, or update.
 # Use a tuple for an ordered collection that should stay fixed and immutable.
+
+
+# 11. Common tuple methods: count() and index()
+language_tuple = ('Rust', 'Java', 'Python', 'C++', 'Rust')
+
+# count(value) tells how many times a value appears. It returns 0 if absent.
+print('Rust count:', language_tuple.count('Rust'))
+print('JavaScript count:', language_tuple.count('JavaScript'))
+
+# count() requires a value. This example would raise TypeError:
+# language_tuple.count()
+
+# index(value) returns the index of the first matching item.
+print('Java index:', language_tuple.index('Java'))
+
+# index() raises ValueError if the value is absent. Example:
+# language_tuple.index('JavaScript')
+
+# Optional start and stop positions limit where index() searches. The stop
+# position is excluded, just like the stop in a slice.
+repeated_languages = ('Rust', 'Java', 'Python', 'C++', 'Rust', 'Python')
+print('Python at or after index 3:', repeated_languages.index('Python', 3))
+
+more_languages = (
+    'Rust', 'Java', 'Python', 'C++', 'Rust', 'Python', 'JavaScript', 'Python'
+)
+print('Python from index 2 up to (not including) 5:',
+      more_languages.index('Python', 2, 5))
+
+
+# 12. Sorting tuples with sorted()
+# sorted() accepts iterables, including tuples, and returns a NEW list.
+number_tuple = (13, 2, 78, 3, 45, 67, 18, 7)
+sorted_numbers = sorted(number_tuple)
+print('Original tuple:', number_tuple)
+print('Sorted list:', sorted_numbers)
+
+# Use reverse=True to sort in descending order.
+language_tuple = ('Rust', 'Java', 'Python', 'C++', 'Rust', 'Python')
+print('Descending:', sorted(language_tuple, reverse=True))
+
+# Use key=len to sort strings by their length. When lengths are equal, their
+# original relative order is kept (stable sorting).
+print('Sorted by word length:', sorted(language_tuple, key=len))
+
+# Difference to remember:
+#   tuple: immutable, so it has no sort() method
+#   list.sort(): sorts that list in place and returns None
+#   sorted(iterable): works with tuples and other iterables, returns a new list
