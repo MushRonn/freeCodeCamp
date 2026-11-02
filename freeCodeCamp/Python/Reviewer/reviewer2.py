@@ -369,3 +369,98 @@ for developer_name, developer_id in zip(developers, developer_ids):
 short_list = ['A', 'B']
 long_list = [10, 20, 30]
 print('Pairs stop at the shorter list:', list(zip(short_list, long_list)))
+
+
+# 17. List comprehensions
+# A list comprehension builds a new list from an iterable. Basic shape:
+# [expression for item in iterable if condition]
+# The `if` at the end is an optional filter.
+even_numbers = [number for number in range(21) if number % 2 == 0]
+print('Even numbers from 0 to 20:', even_numbers)
+
+# A conditional expression chooses the value for each item. Its shape is:
+# value_if_true if condition else value_if_false
+numbers_to_label = [1, 2, 3, 4, 5]
+number_labels = [
+    (number, 'Even') if number % 2 == 0 else (number, 'Odd')
+    for number in numbers_to_label
+]
+print('Even or odd:', number_labels)
+
+
+# 18. filter(): keep items that pass a condition
+words = ['tree', 'sky', 'mountain', 'river', 'cloud', 'sun']
+
+
+def is_long_word(word):
+    """Return True when a word has more than four characters."""
+    return len(word) > 4
+
+
+# filter(function, iterable) selects items for which the function returns True.
+# Convert its result to a list to see all selected values.
+long_words = list(filter(is_long_word, words))
+print('Words longer than four characters:', long_words)
+
+
+# 19. map(): transform every item
+celsius = [0, 10, 20, 30, 40]
+
+
+def to_fahrenheit(temperature):
+    return (temperature * 9 / 5) + 32
+
+
+# map(function, iterable) applies the function to each item.
+fahrenheit = list(map(to_fahrenheit, celsius))
+print('Fahrenheit temperatures:', fahrenheit)
+
+
+# 20. sum(): add values from an iterable
+sum_numbers = [5, 10, 15, 20]
+print('Sum:', sum(sum_numbers))
+
+# The optional start value is added to the total. It can be positional or
+# named with the keyword `start`.
+print('Sum with positional start:', sum(sum_numbers, 10))
+print('Sum with keyword start:', sum(sum_numbers, start=10))
+
+
+# 21. Lambda functions
+# A lambda is a small anonymous function written as:
+# lambda parameter: single_expression
+# The expression's value is returned automatically.
+square_lambda = lambda number: number ** 2
+print('Square of 4:', square_lambda(4))  # 16
+
+# Lambdas are useful inline with higher-order functions such as filter().
+# This keeps only numbers where the lambda condition is True.
+filter_numbers = [1, 2, 3, 4, 5]
+even_from_filter = list(
+    filter(lambda number: number % 2 == 0, filter_numbers)
+)
+print('Even numbers:', even_from_filter)
+
+# Lambdas can also be used inline with map() to transform each value.
+doubled_numbers = list(map(lambda number: number * 2, filter_numbers))
+print('Doubled numbers:', doubled_numbers)
+
+# Best practice: avoid assigning a lambda to a name. If the function needs a
+# name or is reused, define it with def for readability.
+def square(number):
+    return number ** 2
+
+
+squared_numbers = list(map(square, filter_numbers))
+print('Squared with a regular function:', squared_numbers)
+
+# Avoid complicated lambdas. A regular function can make branching logic
+# easier to understand.
+def calculate_expression(value):
+    if value > 0:
+        return value ** 2 + 2 * value - 1
+    else:
+        return value ** 3 - value + 4
+
+
+print('Expression result:', calculate_expression(3))  # 14
