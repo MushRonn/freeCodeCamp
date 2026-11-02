@@ -307,3 +307,31 @@ for current_word in words:
         # This else belongs to the inner for loop. It runs when that loop
         # checks every letter without finding a vowel (no break occurred).
         print(f"'{current_word}' has no vowels")
+
+
+# 14. range() in loops
+# range(start, stop, step) generates integers. The stop value is required and
+# excluded from the sequence. If omitted, start defaults to 0 and step to 1.
+for number in range(3):
+    print('range(3):', number)  # 0, 1, 2
+
+for number in range(1, 5):
+    print('range(1, 5):', number)  # 1, 2, 3, 4
+
+for number in range(2, 11, 2):
+    print('Even number:', number)  # 2, 4, 6, 8, 10
+
+# A negative step counts downward. The stop is still excluded.
+for number in range(40, 0, -10):
+    print('Counting down:', number)  # 40, 30, 20, 10
+
+# range objects are immutable. Convert one to a list if you want to see all
+# its values together (the resulting list itself can be changed).
+even_numbers = list(range(2, 11, 2))
+print('Even numbers as a list:', even_numbers)
+even_numbers.append(12)
+print('Updated list:', even_numbers)
+
+# range() needs at least one integer argument; floats are not accepted.
+# range()       # TypeError: no argument provided
+# range(3.4)    # TypeError: range arguments must be integers
