@@ -77,3 +77,68 @@ print('Reversed:', numbers[::-1])
 
 # Slicing makes a new list; it does not change the original list.
 print('Original numbers:', numbers)
+
+
+# 7. Common list methods
+# append(item) adds one item to the end. Appending a list keeps it nested.
+append_demo = [1, 2, 3]
+append_demo.append(4)
+append_demo.append([5, 6])
+print('append adds one item:', append_demo)  # [1, 2, 3, 4, [5, 6]]
+
+# extend(iterable) adds each item from the iterable to the end of the list.
+extend_demo = [1, 2, 3]
+extend_demo.extend([4, 5, 6])
+print('extend adds each item:', extend_demo)  # [1, 2, 3, 4, 5, 6]
+
+# insert(index, item) places a value at the requested position.
+insert_demo = [1, 2, 3, 4]
+insert_demo.insert(2, 'two and a half')
+print('After insert:', insert_demo)
+
+# remove(value) removes only the first matching value.
+remove_demo = [10, 20, 30, 30]
+remove_demo.remove(30)
+print('After removing first 30:', remove_demo)  # [10, 20, 30]
+
+# pop(index) removes and returns an item. With no index, it removes the last.
+pop_demo = ['a', 'b', 'c']
+removed_item = pop_demo.pop(1)
+last_item = pop_demo.pop()
+print('Popped items:', removed_item, last_item)
+print('List after pop:', pop_demo)
+
+# clear() removes every item from the list.
+clear_demo = [1, 2, 3]
+clear_demo.clear()
+print('After clear:', clear_demo)  # []
+
+
+# 8. Sorting and reversing
+# sort() changes the list in place and returns None.
+sort_demo = [19, 2, 35, 1, 67, 41]
+sort_demo.sort()
+print('Sorted in place:', sort_demo)
+
+# sorted(iterable) returns a new sorted list and leaves the original unchanged.
+unsorted_numbers = [19, 2, 35, 1, 67, 41]
+sorted_numbers = sorted(unsorted_numbers)
+print('Original:', unsorted_numbers)
+print('New sorted list:', sorted_numbers)
+
+# Both sort() and sorted() accept reverse=True for descending order.
+print('Descending:', sorted(unsorted_numbers, reverse=True))
+
+# reverse() reverses the current order in place; it does not sort the values.
+reverse_demo = [6, 5, 4, 3, 2, 1]
+reverse_demo.reverse()
+print('After reverse:', reverse_demo)
+
+
+# 9. Finding an item's index
+# index(value) returns the position of the first matching item.
+programming_languages = ['Rust', 'Java', 'Python', 'C++']
+print("Index of Java:", programming_languages.index('Java'))  # 1
+
+# index(value) raises ValueError if the value is not in the list. Example:
+# programming_languages.index('JavaScript')  # ValueError
