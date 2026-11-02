@@ -335,3 +335,37 @@ print('Updated list:', even_numbers)
 # range() needs at least one integer argument; floats are not accepted.
 # range()       # TypeError: no argument provided
 # range(3.4)    # TypeError: range arguments must be integers
+
+
+# 15. enumerate(): loop over values and keep their indexes
+languages = ['Spanish', 'English', 'Russian', 'Chinese']
+
+# One way is to maintain an index yourself, but enumerate() does this for you.
+for index, language in enumerate(languages):
+    print(f'Index {index} and language {language}')
+
+# enumerate(iterable) produces pairs of (count, value). Convert it to a list
+# to inspect all pairs at once.
+print('Enumerated pairs:', list(enumerate(languages)))
+
+# The optional second argument sets the starting count; the default is 0.
+for index, language in enumerate(languages, 1):
+    print(f'Number {index}: {language}')
+
+
+# 16. zip(): loop over multiple iterables in parallel
+developers = ['Naomi', 'Dario', 'Jessica', 'Tom']
+developer_ids = [1, 2, 3, 4]
+
+# zip() produces tuples pairing items at matching positions. Convert to a
+# list to inspect the pairs; otherwise it can be used directly in a loop.
+print('Developer and ID pairs:', list(zip(developers, developer_ids)))
+
+for developer_name, developer_id in zip(developers, developer_ids):
+    print(f'Name: {developer_name}')
+    print(f'ID: {developer_id}')
+
+# zip() stops when the shortest input iterable runs out of items.
+short_list = ['A', 'B']
+long_list = [10, 20, 30]
+print('Pairs stop at the shorter list:', list(zip(short_list, long_list)))
