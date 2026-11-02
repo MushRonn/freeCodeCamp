@@ -142,3 +142,55 @@ print("Index of Java:", programming_languages.index('Java'))  # 1
 
 # index(value) raises ValueError if the value is not in the list. Example:
 # programming_languages.index('JavaScript')  # ValueError
+
+
+# 10. Tuples
+# A tuple is an ordered sequence. It can hold mixed types, like a list, but
+# it is immutable: its elements cannot be replaced or removed after creation.
+developer_tuple = ('Alice', 34, 'Rust Developer')
+programming_tuple = ('Python', 'Java', 'C++', 'Rust')
+print('Developer tuple:', developer_tuple)
+
+# Access tuple items with indexes. Indexing starts at 0; negative indexes
+# count backward from the end.
+print('Age:', developer_tuple[1])
+tuple_numbers = (1, 2, 3, 4, 5)
+print('Second to last:', tuple_numbers[-2])
+
+# Out-of-range indexing raises IndexError. Example (commented out):
+# tuple_numbers[7]  # IndexError
+
+# Tuples cannot be updated or have individual items deleted. These examples
+# would raise TypeError, so they stay commented out:
+# programming_tuple[0] = 'JavaScript'  # TypeError: tuples are immutable
+# del developer_tuple[1]  # TypeError: tuple items cannot be deleted
+
+# tuple(iterable) converts an iterable, such as a string or list, into a tuple.
+developer_name = 'Jessica'
+tuple_from_string = tuple(developer_name)
+tuple_from_list = tuple(['Python', 'Rust'])
+print('Tuple from string:', tuple_from_string)
+print('Tuple from list:', tuple_from_list)
+
+# Use `in` to check whether an item is present.
+print('Rust is included:', 'Rust' in programming_tuple)
+print('JavaScript is included:', 'JavaScript' in programming_tuple)
+
+# Unpacking assigns tuple items to variables. A starred target collects the
+# remaining items into a list.
+person = ('Alice', 34, 'Rust Developer')
+person_name, person_age, person_job = person
+print('Unpacked tuple:', person_name, person_age, person_job)
+
+person_name, *person_rest = person
+print('Name:', person_name)
+print('Other values (a list):', person_rest)
+
+# Slicing returns a tuple. The start is included and the stop is excluded.
+dessert_tuple = ('cake', 'pie', 'cookies', 'ice cream')
+print('Pie and cookies:', dessert_tuple[1:3])
+print('Every other dessert:', dessert_tuple[::2])
+
+# Choosing a sequence:
+# Use a list for a collection you expect to add to, remove from, or update.
+# Use a tuple for an ordered collection that should stay fixed and immutable.
