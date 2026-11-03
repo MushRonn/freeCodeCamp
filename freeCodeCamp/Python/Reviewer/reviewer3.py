@@ -299,3 +299,9 @@ def square(number):
 
 
 print('Squares with named function:', list(map(square, lambda_numbers)))
+
+
+#My SCORE
+
+Score = 100
+print(f'My score is: {Score}%')
