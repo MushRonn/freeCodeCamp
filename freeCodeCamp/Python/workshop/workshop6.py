@@ -1,1 +1,25 @@
 # Build a Medical Data Validator
+
+medical_records = [
+    {
+        'patient_id': 'P1001',
+        'age': 34,
+        'gender': 'Female',
+        'diagnosis': 'Hypertension',
+        'medications': ['Lisinopril'],
+        'last_visit_id': 'V2301'
+    }
+]
+
+def validate(data):
+    is_sequence = isinstance(data, (list, tuple))
+    if not is_sequence:
+        print('Invalid format: expected a list or tuple.')
+        return False
+    
+    is_invalid = False
+    for index, dictionary in enumerate(data):
+        if not isinstance(dictionary, dict):
+            print(f'Invalid format: expected a dictionary at position {index}.')
+            is_invalid = True
+        pass
