@@ -4,6 +4,18 @@ Dictionaries store key-value pairs. Use a key to look up its associated value.
 Keys must be unique and hashable; values may be repeated and can be any type.
 """
 
+# The standard library is Python's collection of reusable modules. It includes
+# tools for math, randomness, regular expressions, dates, files, the OS, and more.
+import datetime
+import math
+import math as m
+import random
+import re
+
+# Import only selected names when that is more convenient. These names can
+# then be used without writing the module prefix.
+from math import cos, radians, sin
+
 
 # 1. Create a dictionary with curly braces and key: value pairs.
 pizza = {
@@ -217,3 +229,48 @@ print('After ^=:', symmetric_set)
 # The `in` operator checks whether a value is a set member.
 print('5 is in my_set:', 5 in my_set)
 print('6 is in my_set:', 6 in my_set)
+
+
+# 14. Standard library modules and imports
+# A module is a file of reusable Python names such as functions and constants.
+# Import statements are usually placed at the top of the file.
+
+# Import a module, then access its names with dot notation.
+print('Square root of 36:', math.sqrt(36))
+print('Pi:', math.pi)
+
+# Importing with `as` gives the module a shorter alias.
+print('Square root via alias:', m.sqrt(49))
+
+# Import selected functions to use them without a module prefix.
+angle_degrees = 40
+angle_radians = radians(angle_degrees)
+print('Sine:', sin(angle_radians))
+print('Cosine:', cos(angle_radians))
+
+# Other common standard library modules:
+# random: random numbers or choices
+# re: regular expressions (pattern matching)
+# datetime: dates and times
+print('Random die roll:', random.randint(1, 6))
+print('Pattern found:', re.search(r'\d+', 'Room 42').group())
+
+birthday = datetime.date(1959, 7, 15)
+print('Birthday:', birthday)
+print('Day / month / year:', birthday.day, birthday.month, birthday.year)
+
+# Avoid `from module import *` in normal code: it can cause name collisions
+# and makes it harder to tell where imported names came from.
+# from math import *
+
+
+# 15. The __name__ == '__main__' guard
+# Python sets __name__ to '__main__' when a file is run directly. When another
+# file imports it, __name__ is set to the module name instead. Put code that
+# should run only when this file is executed directly inside this condition.
+def show_direct_run_message():
+    print('This example is running as the main program.')
+
+
+if __name__ == '__main__':
+    show_direct_run_message()
