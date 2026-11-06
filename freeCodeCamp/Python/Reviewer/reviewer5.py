@@ -140,3 +140,80 @@ for index, product_pair in enumerate(products.items()):
 # The optional second argument sets a different starting count.
 for index, product_pair in enumerate(products.items(), 1):
     print('Count from one:', index, product_pair)
+
+
+# 10. Sets
+# Sets are mutable collections of unique, unordered elements. They have no
+# indexes, so access or test elements by value. Elements must be hashable.
+number_set = {1, 2, 3, 4, 5}
+duplicate_set = {1, 2, 2, 3, 3, 3}
+print('Set:', number_set)
+print('Duplicates are removed:', duplicate_set)  # Contains 1, 2, and 3 once.
+
+# Use set() to create an empty set. {} creates an empty dictionary instead.
+empty_set = set()
+empty_dictionary = {}
+print('Empty set:', empty_set)
+print('Type of {}:', type(empty_dictionary))
+
+# Sets can contain numbers, strings, and tuples of hashable values.
+mixed_set = {42, 'Python', ('x', 'y')}
+print('Mixed set:', mixed_set)
+# {('x', [1, 2])}  # TypeError: a tuple with a list is not hashable.
+
+
+# 11. Add and remove set elements
+mutable_set = {1, 2, 3, 4, 5}
+mutable_set.add(6)
+mutable_set.add(5)  # Adding a duplicate does not add another copy.
+print('After add():', mutable_set)
+
+mutable_set.remove(4)  # remove() raises KeyError if the value is absent.
+mutable_set.discard(99)  # discard() does nothing if the value is absent.
+print('After remove() and discard():', mutable_set)
+# mutable_set.remove(99)  # KeyError because 99 is not in the set.
+
+clear_set = {1, 2, 3}
+clear_set.clear()
+print('After clear():', clear_set)
+
+
+# 12. Compare sets
+my_set = {1, 2, 3, 4, 5}
+your_set = {2, 3, 4, 6}
+
+print('your_set is a subset of my_set:', your_set.issubset(my_set))
+print('my_set is a superset of your_set:', my_set.issuperset(your_set))
+print('Sets are disjoint:', my_set.isdisjoint(your_set))
+
+# A subset has every element contained in the other set. A superset contains
+# every element of the other set. Disjoint sets have no values in common.
+
+
+# 13. Set math operators
+# Each operator below creates a new set.
+print('Union |:', my_set | your_set)  # Values in either set.
+print('Intersection &:', my_set & your_set)  # Values shared by both.
+print('Difference -:', my_set - your_set)  # Values in the left set only.
+print('Symmetric difference ^:', my_set ^ your_set)  # Values in either, not both.
+
+# Compound assignment updates the set on the left in place.
+union_set = my_set.copy()
+union_set |= your_set
+print('After |=:', union_set)
+
+intersection_set = my_set.copy()
+intersection_set &= your_set
+print('After &=:', intersection_set)
+
+difference_set = my_set.copy()
+difference_set -= your_set
+print('After -=:', difference_set)
+
+symmetric_set = my_set.copy()
+symmetric_set ^= your_set
+print('After ^=:', symmetric_set)
+
+# The `in` operator checks whether a value is a set member.
+print('5 is in my_set:', 5 in my_set)
+print('6 is in my_set:', 6 in my_set)
