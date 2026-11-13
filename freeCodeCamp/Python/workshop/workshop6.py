@@ -1,6 +1,5 @@
-#Building a Medical Data Validator
+# Build a Medical Data Validator
 
-#if u remove the medical records inside the tuple and make it a string, it will throw the Invalid format message
 medical_records = [
     {
         'patient_id': 'P1001',
@@ -33,8 +32,9 @@ medical_records = [
         'diagnosis': 'Chronic Back Pain',
         'medications': ['Ibuprofen', 'Physical Therapy'],
         'last_visit_id': 'V2304',
-    }
+    },
 ]
+
 
 def validate(data):
     is_sequence = isinstance(data, (list, tuple))
@@ -42,17 +42,35 @@ def validate(data):
     if not is_sequence:
         print('Invalid format: expected a list or tuple.')
         return False
-        
+
     is_invalid = False
+    key_set = set([
+        'patient_id',
+        'age',
+        'gender',
+        'diagnosis',
+        'medications',
+        'last_visit_id'
+    ])
 
     for index, dictionary in enumerate(data):
         if not isinstance(dictionary, dict):
             print(f'Invalid format: expected a dictionary at position {index}.')
             is_invalid = True
+            continue
+
+        if set(dictionary.keys()) != key_set:
+            print(
+                f'Invalid format: {dictionary} at position {index} '
+                'has missing and/or invalid keys.'
+            )
+            is_invalid = True
 
     if is_invalid:
         return False
+
     print('Valid format.')
     return True
+
 
 validate(medical_records)
