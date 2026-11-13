@@ -1,3 +1,5 @@
+import re
+
 # Build a Medical Data Validator
 
 medical_records = [
@@ -37,7 +39,9 @@ medical_records = [
 
 
 def find_invalid_records(patient_id, age, gender, diagnosis, medications, last_visit_id):
-    constraints = {}
+    constraints = {
+        'patient_id': isinstance(patient_id, str) and re.search('p', patient_id)
+    }
     return constraints
 
 
@@ -79,3 +83,4 @@ def validate(data):
 
 
 validate(medical_records)
+print(find_invalid_records(**medical_records[0]))
