@@ -23,3 +23,9 @@ def validate(data):
             print(f'Invalid format: expected a dictionary at position {index}.')
             is_invalid = True
         pass
+
+    if is_invalid:
+        return False
+    
+    print('Valid format.')
+    return True
