@@ -1,5 +1,6 @@
-# Build a Medical Data Validator
+#Building a Medical Data Validator
 
+#if u remove the medical records inside the tuple and make it a string, it will throw the Invalid format message
 medical_records = [
     {
         'patient_id': 'P1001',
