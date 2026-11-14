@@ -79,6 +79,12 @@ def validate(data):
                 'has missing and/or invalid keys.'
             )
             is_invalid = True
+            continue
+
+        invalid_records = find_invalid_records(**dictionary)
+        for key in invalid_records:
+            print(f"Unexpected format '{key}: {dictionary[key]}' at position {index}.")
+            is_invalid = True
 
     if is_invalid:
         return False
@@ -88,4 +94,3 @@ def validate(data):
 
 
 validate(medical_records)
-print(find_invalid_records(**medical_records[0]))
