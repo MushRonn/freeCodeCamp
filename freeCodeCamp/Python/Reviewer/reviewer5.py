@@ -274,3 +274,7 @@ def show_direct_run_message():
 
 if __name__ == '__main__':
     show_direct_run_message()
+
+# My Score
+score = 100
+print(f' My score is {score}%')

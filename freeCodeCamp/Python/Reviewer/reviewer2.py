@@ -464,3 +464,7 @@ def calculate_expression(value):
 
 
 print('Expression result:', calculate_expression(3))  # 14
+
+# My Score
+score = 100
+print(f' My score is {score}%')

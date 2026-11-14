@@ -93,3 +93,7 @@ update_demo = {
 update_demo.update({'price': 15, 'total_time': 25})
 print('After update:', update_demo)
 # The existing price is overwritten; total_time is added because it was new.
+
+# My Score
+score = 100
+print(f' My score is {score}%')

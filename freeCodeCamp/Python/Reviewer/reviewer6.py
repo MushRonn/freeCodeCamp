@@ -247,3 +247,7 @@ print('Whole string fails:', re.fullmatch(r'\d+:\d+', '10:30pm'))
 # findall() returns all matches. sub() replaces matches; count is passed by name.
 print('All numbers:', re.findall(r'\d+', 'Rooms 12, 7, and 105'))
 print('Redacted:', re.sub(r'\d', '*', '555 0123', count=3))
+
+# My Score
+score = 100
+print(f' My score is {score}%')
