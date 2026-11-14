@@ -173,3 +173,7 @@ try:
     report_missing_config()
 except ValueError as error:
     print(f'Configuration error: {error}')
+
+# My Score
+score = 95
+print(f' My score is {score}%')
