@@ -225,3 +225,6 @@ message = TimestampedMessage('Hello!')
 print(message.timestamp.strftime('%Y-%m-%d %H:%M:%S'))
 print(message.timestamp.strftime('%d/%m/%Y'))
 # Separators such as -, /, :, and spaces are written literally in the format.
+
+# MY SCORE = 100%
+# Means I got all 10 questions right
