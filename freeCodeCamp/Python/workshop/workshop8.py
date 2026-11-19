@@ -87,3 +87,8 @@ class Inbox:
             return
         del self.emails[actual_index]
         print('Email deleted.\n')
+        
+# Step 41 made me remove current time and print so I commented them out instead
+      
+# current_time = datetime.datetime.now()
+# print(current_time.strftime('%H:%M:%S'))
