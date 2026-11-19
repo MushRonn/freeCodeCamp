@@ -20,3 +20,22 @@ email_obj = Email('alice@example.com', 'bob@example.com', 'Hello', 'Hi Bob!')
 # print(email_obj.read)
 # email_obj.mark_as_read()
 # print(email_obj.read)
+
+class User:
+    def __init__(self, name):
+        self.name = name
+        self.inbox = Inbox()
+        
+    def send_email(self, receiver, subject, body):
+        email = Email(self, receiver, subject, body)
+        receiver.inbox.receive_email(email)
+        
+class Inbox:
+    def __init__(self):
+        self.emails = []
+    
+    def receive_email(self, email):
+        self.emails.append(email)
+
+alice = User('Alice')
+bob = User('Bob')
