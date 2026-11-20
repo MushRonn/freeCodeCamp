@@ -9,6 +9,9 @@ class Employee:
     def __str__(self):
         return f'{self.name}: {self.level}'
     
+    def __repr__(self):
+        return f'Employee({self.name!r}, {self.level!r})'
+    
     @property
     def name(self):
         return self._name
@@ -21,5 +24,6 @@ charlie_brown = Employee('Charlie Brown', 'trainee')
 print(charlie_brown)
 
 # Step 10 is to remove these 2 lines below, so I commented them out instead
+
 # print(charlie_brown.name)
 # print(charlie_brown.level)
