@@ -3,6 +3,8 @@
 
 class Employee:
     def __init__(self, name, level):
+        if not isinstance(name, str) or not isinstance(level, str):
+            raise TypeError("'name' and 'level' attributes must be of type 'str'.")
         self._name = name
         self._level = level
     
@@ -27,3 +29,7 @@ print(charlie_brown)
 
 # print(charlie_brown.name)
 # print(charlie_brown.level)
+
+# Step 13 is to remove the print repr, so I commented it out instead.
+
+#print(repr(charlie_brown))
