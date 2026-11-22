@@ -13,13 +13,14 @@ class Employee:
         # if not isinstance(name, str) or not isinstance(level, str):
             # raise TypeError("'name' and 'level' attributes must be of type 'str'.")
             
-        if not isinstance(level, str):
-            raise TypeError("'level' attribute must be of type 'str'.") 
-        if level not in Employee._base_salaries:
-            raise ValueError(f"Invalid value '{level}' for 'level' attribute.")
+        # if not isinstance(level, str):
+            # raise TypeError("'level' attribute must be of type 'str'.") 
+            
+        # if level not in Employee._base_salaries:
+            # raise ValueError(f"Invalid value '{level}' for 'level' attribute.")
         
         self.name = name
-        self._level = level
+        self.level = level
         self._salary = Employee._base_salaries[level]
     
     def __str__(self):
@@ -34,11 +35,33 @@ class Employee:
     
     @name.setter
     def name(self, new_name):
+        if not isinstance(new_name, str):
+            raise TypeError("'name' must be a string.")
         self._name = new_name
+        print(f"'name' updated to '{self._name}'.")
     
     @property
     def level(self):
         return self._level
+    
+    @level.setter
+    
+    def level(self, new_level):
+        if not isinstance(new_level, str):
+            raise TypeError("'level' must be a string.")
+        
+        if new_level not in Employee._base_salaries:
+            raise ValueError(f"Invalid value '{new_level}' for 'level' attribute.")
+        
+        if hasattr(self, '_level') and new_level == self.level:
+            raise ValueError(f"'{new_level}' is already the selected level.")
+        
+        if (hasattr(self, '_level')
+            and Employee._base_salaries[new_level] < Employee._base_salaries [self.level]):
+            raise ValueError('Cannot change to lower level.')
+        
+        self._salary = Employee._base_salaries[new_level]
+        self._level = new_level
     
     @property
     def salary(self):
@@ -58,3 +81,4 @@ print(charlie_brown)
 
 # Step 19
 print(f'Base salary: ${charlie_brown.salary:.2f}')
+# charlie_brown.name = 'Charles Brown'
