@@ -2,9 +2,19 @@
 # Worth 40 steps
 
 class Employee:
+    _base_salaries = {
+        'trainee': 1000,
+        'junior': 2000,
+        'mid-level': 3000,
+        'senior': 4000
+    }
+    
     def __init__(self, name, level):
         if not isinstance(name, str) or not isinstance(level, str):
             raise TypeError("'name' and 'level' attributes must be of type 'str'.")
+        if level not in Employee._base_salaries:
+            raise ValueError(f"Invalid value '{level}' for 'level' attribute.")
+        
         self._name = name
         self._level = level
     
