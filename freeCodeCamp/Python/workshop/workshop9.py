@@ -10,13 +10,17 @@ class Employee:
     }
     
     def __init__(self, name, level):
-        if not isinstance(name, str) or not isinstance(level, str):
-            raise TypeError("'name' and 'level' attributes must be of type 'str'.")
+        # if not isinstance(name, str) or not isinstance(level, str):
+            # raise TypeError("'name' and 'level' attributes must be of type 'str'.")
+            
+        if not isinstance(level, str):
+            raise TypeError("'level' attribute must be of type 'str'.") 
         if level not in Employee._base_salaries:
             raise ValueError(f"Invalid value '{level}' for 'level' attribute.")
         
-        self._name = name
+        self.name = name
         self._level = level
+        self._salary = Employee._base_salaries[level]
     
     def __str__(self):
         return f'{self.name}: {self.level}'
@@ -28,9 +32,17 @@ class Employee:
     def name(self):
         return self._name
     
+    @name.setter
+    def name(self, new_name):
+        self._name = new_name
+    
     @property
     def level(self):
         return self._level
+    
+    @property
+    def salary(self):
+        return self._salary
 
 charlie_brown = Employee('Charlie Brown', 'trainee')
 print(charlie_brown)
@@ -43,3 +55,6 @@ print(charlie_brown)
 # Step 13 is to remove the print repr, so I commented it out instead.
 
 #print(repr(charlie_brown))
+
+# Step 19
+print(f'Base salary: ${charlie_brown.salary:.2f}')
