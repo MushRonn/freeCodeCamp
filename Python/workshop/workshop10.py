@@ -23,6 +23,9 @@ class Movie:
         return f'{self.title} ({self.year}) - {self.duration} min, {self.director}'
     
 class TVSeries(Movie):
+    
+    """Child class representing an entire TV series."""
+    
     def __init__(self, title, year, director, duration, seasons, total_episodes):
         super().__init__(title, year, director, duration)
         
@@ -80,3 +83,7 @@ try:
     
 except ValueError as e:
     print(f'Validation Error: {e}')
+
+# Step 27 is to remove these 2 lines, I commented them out instead.
+print(movie1.__doc__)
+print(series1.__doc__)
