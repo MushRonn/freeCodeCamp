@@ -2,6 +2,8 @@
 # Worth 42 steps
 
 class Movie:
+    """Parent class representing a movie."""
+    
     def __init__(self, title, year, director, duration):
         if not title.strip():
             raise ValueError('Title cannot be empty')
@@ -32,6 +34,13 @@ class TVSeries(Movie):
         self.seasons = seasons
         self.total_episodes = total_episodes
 
+    def __str__(self):
+        return (
+            f'{self.title} ({self.year}) - {self.seasons} seasons, '
+            f'{self.total_episodes} episodes, {self.duration} min avg, '
+            f'{self.director}'
+        )
+
 class MediaCatalogue:
     def __init__(self):
         self.items = []
@@ -59,6 +68,10 @@ try:
     catalogue.add(movie2)
     
     series1 = TVSeries('Breaking Bad', 2008, 'Vince Gilligan', 49, 5, 62)
+    catalogue.add(series1)
+
+    series2 = TVSeries('The Office', 2005, 'Greg Daniels', 22, 9, 201)
+    catalogue.add(series2)
     
     #Step 21 is to delete this so I commented it out instead.
     # print(series1)
