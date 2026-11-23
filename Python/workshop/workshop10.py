@@ -23,6 +23,12 @@ class Movie:
 class TVSeries(Movie):
     def __init__(self, title, year, director, duration, seasons, total_episodes):
         super().__init__(title, year, director, duration)
+        
+        if seasons < 1:
+            raise ValueError('Seasons must be 1 or greater')
+        if total_episodes < 1:
+            raise ValueError('Total episodes must be 1 or greater')
+
         self.seasons = seasons
         self.total_episodes = total_episodes
 
@@ -51,6 +57,11 @@ try:
     
     movie2 = Movie('Arrival', 2016, 'Denis Villeneuve', 116)
     catalogue.add(movie2)
+    
+    series1 = TVSeries('Breaking Bad', 2008, 'Vince Gilligan', 49, 5, 62)
+    
+    #Step 21 is to delete this so I commented it out instead.
+    # print(series1)
 
     print(catalogue)
     
