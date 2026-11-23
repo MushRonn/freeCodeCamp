@@ -28,7 +28,7 @@ class TVSeries(Movie):
         
         if seasons < 1:
             raise ValueError('Seasons must be 1 or greater')
-        if total_episodes < 1:
+        if total_episodes < 1: 
             raise ValueError('Total episodes must be 1 or greater')
 
         self.seasons = seasons
