@@ -1,16 +1,17 @@
+
 # Building a Media Catalog
 # Worth 42 steps
 
 class MediaError(Exception):
     """Custom exception for media-related errors."""
-    
+
     def __init__(self, message, obj):
         super().__init__(message)
         self.obj = obj
 
 class Movie:
     """Parent class representing a movie."""
-    
+
     def __init__(self, title, year, director, duration):
         if not title.strip():
             raise ValueError('Title cannot be empty')
@@ -20,25 +21,26 @@ class Movie:
             raise ValueError('Director cannot be empty')
         if duration <= 0:
             raise ValueError('Duration must be positive')
-        
+
         self.title = title
         self.year = year
         self.director = director
         self.duration = duration
-        
+
     def __str__(self):
         return f'{self.title} ({self.year}) - {self.duration} min, {self.director}'
-    
+
+
 class TVSeries(Movie):
-    
+
     """Child class representing an entire TV series."""
-    
+
     def __init__(self, title, year, director, duration, seasons, total_episodes):
         super().__init__(title, year, director, duration)
-        
+
         if seasons < 1:
             raise ValueError('Seasons must be 1 or greater')
-        if total_episodes < 1: 
+        if total_episodes < 1:
             raise ValueError('Total episodes must be 1 or greater')
 
         self.seasons = seasons
@@ -51,22 +53,23 @@ class TVSeries(Movie):
             f'{self.director}'
         )
 
+
 class MediaCatalogue:
-    
+
     """A catalogue that can store different types of media items."""
-     
+
     def __init__(self):
         self.items = []
-        
+
     def add(self, media_item):
         if not isinstance(media_item, Movie):
             raise MediaError('Only Movie or TVSeries instances can be added', media_item)
-        
+
         self.items.append(media_item)
-        
+
     def get_movies(self):
         return [item for item in self.items if type(item) is Movie]
-    
+
     def get_tv_series(self):
         return [item for item in self.items if isinstance(item, TVSeries)]
 
@@ -78,40 +81,43 @@ class MediaCatalogue:
         series = self.get_tv_series()
 
         result = f'Media Catalogue ({len(self.items)} items):\n\n'
+
         if movies:
             result += '=== MOVIES ===\n'
             for index, item in enumerate(movies, start=1):
                 result += f'{index}. {item}\n'
+
         return result
 
-catalogue = MediaCatalogue(
+
+catalogue = MediaCatalogue()
 
 try:
     movie1 = Movie('The Matrix', 1999, 'The Wachowskis', 136)
     catalogue.add(movie1)
-    
+
     movie2 = Movie('Arrival', 2016, 'Denis Villeneuve', 116)
     catalogue.add(movie2)
-    
+
     series1 = TVSeries('Breaking Bad', 2008, 'Vince Gilligan', 49, 5, 62)
     catalogue.add(series1)
 
     series2 = TVSeries('The Office', 2005, 'Greg Daniels', 22, 9, 201)
     # Only add single quotes to check the exceptions function
     catalogue.add(series2)
-    
+
     #Step 21 is to delete this so I commented it out instead.
     # print(series1)
 
     print(catalogue)
-    
+
 except ValueError as e:
     print(f'Validation Error: {e}')
-
-# Step 27 is to remove these 2 lines, I commented them out instead.
-# print(movie1.__doc__)
-# print(series1.__doc__)
 
 except MediaError as e:
     print(f'Media Error: {e}')
     print(f'Unable to add {e.obj}: {type(e.obj)}')
+
+# Step 27 is to remove these 2 lines, I commented them out instead.
+# print(movie1.__doc__)
+# print(series1.__doc__)
