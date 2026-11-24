@@ -84,8 +84,8 @@ class MediaCatalogue:
 
         if movies:
             result += '=== MOVIES ===\n'
-            for index, item in enumerate(movies, start=1):
-                result += f'{index}. {item}\n'
+            for i, movie in enumerate(movies, 1):
+                result += f'{i}. {movie}\n'
 
         return result
 
