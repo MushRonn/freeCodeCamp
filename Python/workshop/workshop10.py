@@ -1,6 +1,13 @@
 # Building a Media Catalog
 # Worth 42 steps
 
+class MediaError(Exception):
+    """Custom exception for media-related errors."""
+    
+    def __init__(self, message, obj):
+        super().__init__(message)
+        self.obj = obj
+
 class Movie:
     """Parent class representing a movie."""
     
@@ -45,10 +52,16 @@ class TVSeries(Movie):
         )
 
 class MediaCatalogue:
+    
+    """A catalogue that can store different types of media items."""
+     
     def __init__(self):
         self.items = []
         
     def add(self, media_item):
+        if not isinstance(media_item, Movie):
+            raise MediaError('Only Movie or TVSeries instances can be added', media_item)
+        
         self.items.append(media_item)
 
     def __str__(self):
@@ -74,6 +87,7 @@ try:
     catalogue.add(series1)
 
     series2 = TVSeries('The Office', 2005, 'Greg Daniels', 22, 9, 201)
+    # Only add single quotes to check the exceptions function
     catalogue.add(series2)
     
     #Step 21 is to delete this so I commented it out instead.
@@ -85,5 +99,9 @@ except ValueError as e:
     print(f'Validation Error: {e}')
 
 # Step 27 is to remove these 2 lines, I commented them out instead.
-print(movie1.__doc__)
-print(series1.__doc__)
+# print(movie1.__doc__)
+# print(series1.__doc__)
+
+except MediaError as e:
+    print(f'Media Error: {e}')
+    print(f'Unable to add {e.obj}: {type(e.obj)}')
