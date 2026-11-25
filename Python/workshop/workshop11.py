@@ -59,12 +59,17 @@ class DiscountEngine:
             if strategy.is_applicable(product, user_tier):
                 discounted = strategy.apply_discount(product)
                 prices.append(discounted)
+                
+        # Return minimum value from prices list
+        return min(prices)
     
 product = Product('Wireless Mouse', 50.0)
-print(product)
 
-discount = PercentageDiscount(10)
-print(discount.apply_discount(product))
+# 5 lines of codes in step 28 needs to be removed, I commented them out instead.
+# print(product)  
 
-fixed_discount = FixedAmountDiscount(5)
-print(fixed_discount.apply_discount(product))
+# discount = PercentageDiscount(10)
+# print(discount.apply_discount(product))
+
+# fixed_discount = FixedAmountDiscount(5)
+# print(fixed_discount.apply_discount(product))
