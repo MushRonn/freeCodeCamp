@@ -281,3 +281,7 @@
 # - isinstance includes subclasses; type checks the exact class.
 # - Custom exceptions can preserve a message and attach useful context.
 # - Type hints document expected types but do not normally validate values.
+
+
+# My Score
+# 20/20 = 100%
